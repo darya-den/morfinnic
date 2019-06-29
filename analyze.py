@@ -52,6 +52,10 @@ def predict_lang(n_words, sentence):
     return lang_labels          
 
 def analyze(sentence):
+    """Get all possible tags for the words of the sentence.
+    
+    Preprocess the sentence, determine 2 most probable languages,
+    then get morphological tags of all words."""
     sentence = sentence.lower()
     sentence = re.sub(r'[«»\:;\,\-\—\—\”\(\)\"\]\[\%\–\“\d\„\&/…@\*]', "", sentence)
     sentence_nn = re.sub(r'[\s]', "_", sentence)
@@ -70,18 +74,3 @@ def analyze(sentence):
             for tag in tags[n]:
                 print(tag)
             print()
-
-if __name__ == "__main__":
-    #analyze("Jogahizel ristikanzal on oma oza.")
-    analyze("Meijän vahnembat ruattih kolhouzas.")
-        
-    
-    
-    
-        
-        
-    
-    
-    
-
-
