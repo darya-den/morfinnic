@@ -3,8 +3,12 @@ Language Identification and Morphological Analysis for Finnic Languages
 
 ## What do you need?
 LI is done with the Neural Network and for that you need to install [**Keras**](http://keras.io).
+
 Weights of the model are saved in hdf5, so you need [**h5py**](https://pypi.org/project/h5py/).
+
 **shelve** is necessary for morhological analysis.
+
+Another required Python libraries are [**pandas**](https://pandas.pydata.org) and [**numpy**](https://www.numpy.org).
 
 ## How to implement?
 Everything you need is in the **analyze.py** file. 
