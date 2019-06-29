@@ -7,12 +7,18 @@ with open(common_ngrams, 'r', encoding='utf-8') as f:
     ngram_list = f.readlines()
 ngram_list = [x.strip() for x in ngram_list]
 
-#ngram_list = ["n_", "en", "en_", "in", "_t", "ma", "_n", "aa", "ä_", "uu"]
-
 min_n = min(len(x) for x in ngram_list)
 max_n = max(len(x) for x in ngram_list)
 
 def convert_sentence_to_vec(sentence):
+    """Convert text into vector using most common char n-grams.
+    
+    Count the frequency of each of the n-grams in a sentence
+    and create a numpy array of those frequencies.
+    
+    params: sentence — string
+    
+    returns: string_vector — numpy array with the vector representation of sentence."""
     sentence_ngrams = []
     string_vector = []
     for n in range(min_n, max_n +1):
