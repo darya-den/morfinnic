@@ -8,6 +8,7 @@ from config import n_languages, language_codes
 import re
 import operator
 
+# create NN for word-level LI
 network_words = Sequential()
 network_words.add(Dense(200, input_dim=200, activation='sigmoid'))
 network_words.add(Dense(120, activation='sigmoid'))
@@ -18,6 +19,7 @@ network_words.load_weights('weights_words.hdf5')
 network_words.compile(loss='binary_crossentropy',
                       optimizer='sgd', metrics=['accuracy'])
 
+# create LI for sentence-level LI
 network = Sequential()
 network.add(Dense(200, input_dim=200, activation='sigmoid'))
 network.add(Dense(120, activation='sigmoid'))
@@ -29,7 +31,15 @@ network.compile(loss='binary_crossentropy',
                 optimizer='sgd', metrics=['accuracy'])
 
 def predict_lang(n_words, sentence):
-    """Predict the language of a text with a Neural Network."""
+    """Predict the language of a text with a Neural Network.
+    
+    Predict the language of the text using a NN and display the 
+    probabilities of all languages.
+    
+    params: n_words — number of words in a sentence
+            sentence — string with the text
+            
+    returns: lang_labels — 2 most probable languages"""
     v = convert_sentence_to_vec(sentence)
     vct = np.zeros((1, 200))
     for count, digit in enumerate(v):
@@ -55,7 +65,11 @@ def analyze(sentence):
     """Get all possible tags for the words of the sentence.
     
     Preprocess the sentence, determine 2 most probable languages,
-    then get morphological tags of all words."""
+    then get morphological tags of all words.
+    
+    params: sentence — string wi the text.
+    
+    returns: None."""
     sentence = sentence.lower()
     sentence = re.sub(r'[«»\:;\,\-\—\—\”\(\)\"\]\[\%\–\“\d\„\&/…@\*]', "", sentence)
     sentence_nn = re.sub(r'[\s]', "_", sentence)
