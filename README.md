@@ -8,7 +8,7 @@ Weights of the model are saved in hdf5, so you need [**h5py**](https://pypi.org/
 
 **shelve** is necessary for morhological analysis.
 
-Another required Python libraries are [**pandas**](https://pandas.pydata.org) and [**numpy**](https://www.numpy.org).
+Other required Python libraries are [**pandas**](https://pandas.pydata.org) and [**numpy**](https://www.numpy.org).
 
 ## How to implement?
 Everything you need is in the **analyze.py** file. 
